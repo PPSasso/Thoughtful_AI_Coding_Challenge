@@ -14,3 +14,7 @@ def main_task():
     for item in workitems.inputs:
         log.console_message('\n'+str(item.payload['search-phrase']), "regular")
 
+    log.console_message('\n'+str(workitems.inputs), "regular")
+    log.console_message('\n'+str(workitems.outputs), "regular")
+    
+
