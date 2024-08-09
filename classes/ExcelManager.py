@@ -1,8 +1,6 @@
 from RPA.Robocorp.WorkItems import WorkItems
 import pandas as pd
-import logging
-
-logger = logging.getLogger(__name__)
+from robocorp import log
 
 class ExcelManager:
     """
@@ -22,8 +20,7 @@ class ExcelManager:
             None
 
         """
-
-        logger.info("Reading the work items excel file..")
+        log.console_message("\nReading the work items excel file...", "regular")
 
         # Initialize WorkItems instance
         var_wiWorkItems = WorkItems()
@@ -32,9 +29,9 @@ class ExcelManager:
         # Reads the excel file
         var_dfWorkItems = pd.read_excel(arg_strExcelPath)
 
-        logger.info(f"{len(var_dfWorkItems)} workitems were identified")
+        log.console_message(f"\n{len(var_dfWorkItems)} workitems were identified", "regular")
 
-        logger.info("Creating new workitems")
+        log.console_message("\nCreating new workitems", "regular")
 
         #iterates over the dataframe and adds each row as a new work item
         for index, row in var_dfWorkItems.iterrows():
@@ -43,4 +40,4 @@ class ExcelManager:
             var_wiWorkItems.save_work_item() # Saves the new work item
 
 
-        logger.info("Workitems created successfully!")
+        log.console_message("\nWorkitems created successfully!\n", "regular")
