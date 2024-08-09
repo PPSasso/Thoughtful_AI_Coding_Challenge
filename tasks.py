@@ -11,6 +11,6 @@ def workItemsCreation_task():
 
 @task
 def main_task():
-    for item in workitems.outputs:
+    for item in workitems.inputs:
         log.console_message('\n'+str(item.payload['search-phrase']), "regular")
 
