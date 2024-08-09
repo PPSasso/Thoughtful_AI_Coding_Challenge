@@ -37,8 +37,8 @@ class ExcelManager:
         #iterates over the dataframe and adds each row as a new work item
         for index, row in var_dfWorkItems.iterrows():
             var_wiNewWorkItem = var_wiWorkItems.create_output_work_item()  # Create a new work item
-            var_wiNewWorkItem.update(row.to_dict())
-            cls.var_wiWorkItems.save_work_item(var_wiNewWorkItem) # Saves the new work item
+            var_wiNewWorkItem.payload = (row.to_dict())
+            var_wiWorkItems.save_work_item() # Saves the new work item
 
 
         logging.info("Workitems created successfully!")
