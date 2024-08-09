@@ -11,5 +11,6 @@ def workItemsCreation_task():
 
 @task
 def main_task():
-    workitems.Output
+    for item in workitems.outputs:
+        print(item.payload['search-phrase'])
 

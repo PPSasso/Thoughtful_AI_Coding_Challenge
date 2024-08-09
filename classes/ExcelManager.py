@@ -1,4 +1,4 @@
-from RPA.Robocorp.WorkItems import WorkItems
+from robocorp import workitems
 import pandas as pd
 import logging
 
@@ -23,10 +23,6 @@ class ExcelManager:
 
         logging.info("Reading the work items excel file..")
 
-        # Initialize WorkItems instance
-        var_wiWorkItems = WorkItems()
-        var_wiWorkItems.get_input_work_item()
-
         # Reads the excel file
         var_dfWorkItems = pd.read_excel(arg_strExcelPath)
 
@@ -36,9 +32,7 @@ class ExcelManager:
 
         #iterates over the dataframe and adds each row as a new work item
         for index, row in var_dfWorkItems.iterrows():
-            var_wiNewWorkItem = var_wiWorkItems.create_output_work_item()  # Create a new work item
-            var_wiNewWorkItem.payload = (row.to_dict())
-            var_wiWorkItems.save_work_item() # Saves the new work item
+            workitems.outputs.create(row.to_dict())
 
 
         logging.info("Workitems created successfully!")
