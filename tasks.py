@@ -3,6 +3,8 @@ from robocorp import workitems
 from classes.ExcelManager import ExcelManager
 import logging
 
+logger = logging.getLogger(__name__)
+
 @task
 def workItemsCreation_task():
     # Set the work items
@@ -12,5 +14,5 @@ def workItemsCreation_task():
 @task
 def main_task():
     for item in workitems.outputs:
-        logging.info(item.payload['search-phrase'])
+        logger.info(item.payload['search-phrase'])
 
