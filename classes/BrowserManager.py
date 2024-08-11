@@ -109,12 +109,12 @@ class BrowserManager:
                     except:
                         var_strDescription = 'No description'
                         pass
-                    
+
                     # Capture and save the News Image
                     var_strImageURL:str = article.find_element(By.XPATH, ".//div[@class='promo-media']/a/picture/img").get_attribute('src')
                     var_strImageExtension = var_strImageURL.split('.')[-1]
                     if len(var_strImageExtension) > 4 : var_strImageExtension = 'jpg'
-                    var_strImageFileName = f'newsImage{index+(var_intCount*10)}.{var_strImageExtension}'
+                    var_strImageFileName = f'{arg_strSearchPhrase}Image{index+(var_intCount*10)}.{var_strImageExtension}'
                     urllib.request.urlretrieve(var_strImageURL, f'./output/{var_strImageFileName}')
 
                     # See how many times the search phrase has been mentioned in the title and on the description
