@@ -41,3 +41,23 @@ class ExcelManager:
 
 
         log.console_message("\nWorkitems created successfully!\n", "regular")
+
+    @classmethod
+    def saveNewsFile(cls, arg_dfCapturedNews:pd.DataFrame, arg_strExcelFileName:str):
+        """
+        Saves the all the captured data in an excel file.
+
+        Parameters:
+           - arg_dfCapturedNews (DataFrame): The news that are to be saved.
+           - arg_strExcelFileName (str): The name of the file that will be created.
+        
+        Returns:
+            None
+        """
+
+        log.console_message("\nSalving captured news...", "regular")
+
+        arg_dfCapturedNews.to_excel(f'./output/{arg_strExcelFileName}', index=False)
+
+        log.console_message(f"\nFile successfully created. File name: {arg_strExcelFileName}\n", "regular")
+
